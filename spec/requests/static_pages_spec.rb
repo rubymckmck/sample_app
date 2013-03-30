@@ -20,8 +20,8 @@ describe "StaticPages" do
   	end
 
     it "should have the title 'ROR - HELP'" do 
-      visit '../static_pages/home'
-      page.should have_selector('title', :text => 'ROR - HOME')
+      visit '../static_pages/help'
+      page.should have_selector('title', :text => 'ROR - HELP')
     end
 
 
@@ -33,8 +33,8 @@ describe "StaticPages" do
   	end
 
     it "should have the title 'ROR - ABOUT US'" do 
-      visit '../static_pages/home'
-      page.should have_selector('title', :text => 'ROR - HOME')
+      visit '../static_pages/about'
+      page.should have_selector('title', :text => 'ROR - ABOUT US')
     end
   end
 
