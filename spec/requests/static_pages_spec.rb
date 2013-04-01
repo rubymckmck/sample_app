@@ -1,41 +1,41 @@
 require 'spec_helper'
 
 describe "StaticPages" do
+
+  subject { page }
+
   describe "Home Page" do
-  	it "should have the text 'Sample App'" do 
-  		visit '../static_pages/home'
-  		page.should have_selector('h1', :text => 'Sample App')
-  	end
+    before {visit root_path}
 
-    it "should have the title 'ROR - Home'" do 
-      visit '../static_pages/home'
-      page.should have_selector('title', :text => 'ROR - HOME')
-    end
-
+    it { should have_selector('h1', text: 'Sample App')}
+    it { should have_selector('title', text: 'ROR - HOME')}
   end
+
+
   describe "Help page" do
-  	it "should have the text 'Help Page'" do 
-  		visit '../static_pages/help'
-  		page.should have_selector('h1', :text => 'Help Page')
-  	end
+  	before {visit help_path}
 
-    it "should have the title 'ROR - HELP'" do 
-      visit '../static_pages/help'
-      page.should have_selector('title', :text => 'ROR - HELP')
-    end
-
-
+    it { should have_selector('h1', text: 'Help Page')}
+  	it { should have_selector('title', text: 'ROR - HELP')}
   end
+
+
   describe "About page" do
-  	it "should have the text 'About Us'" do 
-  		visit '../static_pages/about'
-  		page.should have_selector('h1', :text => 'About Us')
-  	end
+    before {visit about_path}
 
-    it "should have the title 'ROR - ABOUT US'" do 
-      visit '../static_pages/about'
-      page.should have_selector('title', :text => 'ROR - ABOUT US')
-    end
+    it { should have_selector('h1', text: 'About Us')}
+    it { should have_selector('title', text: 'ROR - ABOUT US')}
   end
+
+  it "should have the right links" do
+    visit root_path
+    click_link "Help"
+    page.should have_selector('h1', text: 'Help Page')
+    visit root_path
+    click_link "Sign Up!"
+    page.should have_selector('h1', text: 'Sign Up')
+
+  end
+
 
 end
